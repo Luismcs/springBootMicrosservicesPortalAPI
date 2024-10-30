@@ -91,3 +91,20 @@ Deletes a user account by its ID.
 - Java 21
 - Maven
 - Docker
+
+## Technologies Used
+
+- **Java 21**
+- **Spring Boot 3**
+- **Spring Cloud OpenFeign**
+- **Apache HttpClient**
+- **Spring RestTemplate**
+- **Spring Security**
+- **Spring Data JPA**
+- **Lombok**
+- **Gradle**
+- **Swagger**
+- **JSON Web Token (JWT)**
+- **Docker**
+- **Liquibase**
+- **PostgreSQL**
