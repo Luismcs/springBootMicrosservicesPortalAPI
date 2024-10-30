@@ -1,0 +1,52 @@
+services:
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: firstexercise
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: post123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  authentication:
+    build: ./authentication/authentication
+    container_name: authentication-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/firstexercise
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: post123
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+
+  user-information:
+    build: ./exercise
+    container_name: user-information-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/firstexercise
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: post123
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+
+  portal:
+    build: ./manager/manager
+    container_name: portal-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/firstexercise
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: post123
+    ports:
+      - "8082:8082"
+    depends_on:
+      - postgres
+      - authentication
+      - user-information
+
+volumes:
+  postgres_data:

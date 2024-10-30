@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="1" author="luis">
+        <createTable tableName="user_credentials">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="created_date" type="TIMESTAMP"/>
+            <column name="last_modified_by" type="VARCHAR(255)"/>
+            <column name="last_modified_date" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="luis">
+        <createTable tableName="refresh_tokens">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="refresh_token" type="VARCHAR(255)"/>
+            <column name="user_credentials_id" type="BIGINT"/>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="created_date" type="TIMESTAMP"/>
+            <column name="last_modified_by" type="VARCHAR(255)"/>
+            <column name="last_modified_date" type="TIMESTAMP"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="refresh_tokens"
+                                 baseColumnNames="user_credentials_id"
+                                 referencedTableName="user_credentials"
+                                 referencedColumnNames="id"
+                                 constraintName="fk_refresh_tokens_user_credentials_id"/>
+
+    </changeSet>
+
+</databaseChangeLog>
+
+
+
+
