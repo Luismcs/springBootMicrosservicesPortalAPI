@@ -14,6 +14,7 @@ The project is divided into three main components:
 - **Portal**: Uses Feign, RestTemplate, and ApacheHttpClient to communicate with other services.
 - **UserAccountInfo**: Provides endpoints for managing user account information.
 - **Authentication**: Handles user authentication, including sign-in, sign-up, and token refresh operations.
+![System Architecture Diagram](./systemArchitecture%20Diagram.png)
 
 ---
 
