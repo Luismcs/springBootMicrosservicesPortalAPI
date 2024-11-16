@@ -1,6 +1,6 @@
 # Spring Microservices Project
 
-This project is a Spring-based microservices architecture consisting of three microservices:
+This project is my first project developed using Spring Boot. It is a Spring-based microservices architecture consisting of three microservices:
 
 1. **Portal** - Acts as a proxy and delegates requests to the other two microservices.
 2. **UserAccountInfo** - Manages user account details.
